@@ -1,0 +1,17 @@
+﻿<Window x:Class="SmartPhotoOrganizer.UIAspects.Hello"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SmartPhotoOrganizer.UIAspects"
+        mc:Ignorable="d"
+        Title="Hello there! Welcome to Smart Photo Organizer" Height="400" Width="533" WindowStartupLocation="CenterScreen" ResizeMode="CanResize" Icon="/SmartPhotoOrganizer;component/spo_icon.ico" >
+    <Grid>
+        <TextBlock Height="21" Margin="33,47,0,0" Name="TextBlock2" VerticalAlignment="Top" Text="Do you wanna start? Then, please select folders with images." HorizontalAlignment="Left" Width="326" />
+        <TextBlock Height="21" Margin="22,12,0,0" Name="TextBlock3" VerticalAlignment="Top" Text="Hello from Smart Photo Organizer..." FontSize="16" HorizontalAlignment="Left" Width="272" />
+        <Label HorizontalAlignment="Left" Margin="33,114,0,118" Name="Label1" Width="120">Source Folders</Label>
+        <local:MultiFolderPicker Margin="12,74,12,86" x:Name="MultiFolderPicker" />
+        <Button Height="23" HorizontalAlignment="Right" Margin="0,0,111,12" Name="OkButton" VerticalAlignment="Bottom" Width="75" Click="okButton_Click">OK</Button>
+        <Button Height="23" HorizontalAlignment="Right" Margin="0,0,22,12" Name="CancelButton" VerticalAlignment="Bottom" Width="75" IsCancel="True">Cancel</Button>
+    </Grid>
+</Window>

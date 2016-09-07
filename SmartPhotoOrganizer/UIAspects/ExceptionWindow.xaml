@@ -1,0 +1,18 @@
+﻿<Window x:Class="SmartPhotoOrganizer.UIAspects.ExceptionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Smart Photo Gallery Exception Window" Height="400" Width="500">
+    <Grid>
+        <Image Height="38" Margin="11,8,439,0" Name="ErrorIcon" Stretch="Fill" VerticalAlignment="Top" Source="error_icon.png" />
+        <TextBlock
+			Margin="75,12,0,0" VerticalAlignment="Top" TextWrapping="Wrap" TextAlignment="Left" FontSize="18"
+			Text="Smart Photo Gallery has encountered an error!" HorizontalAlignment="Left" />
+        <TextBlock
+			HorizontalAlignment="Left" Margin="20,49,0,0" Text="Details:" VerticalAlignment="Top" />
+        <TextBox Margin="12,68,12,58" Name="ExceptionTextBox" IsReadOnly="True" Background="#EAEAEA" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" />
+        <Button Content="Close" HorizontalAlignment="Right" Margin="0,0,12,28" Width="75" Height="23" VerticalAlignment="Bottom" IsDefault="True" IsCancel="True" />
+    </Grid>
+</Window>
