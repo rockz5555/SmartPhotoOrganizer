@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace SmartPhotoOrganizer
+namespace SmartPhotoOrganizer.DataStructures
 {
     public class BaseDirectory
     {

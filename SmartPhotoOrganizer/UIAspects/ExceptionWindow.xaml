@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Smart Photo Gallery Exception Window" Height="400" Width="500">
+        Title="Smart Photo Gallery: Exception" Height="400" Width="500" ResizeMode="NoResize" ShowInTaskbar="False" Topmost="True" WindowStartupLocation="CenterScreen">
     <Grid>
         <Image Height="38" Margin="11,8,439,0" Name="ErrorIcon" Stretch="Fill" VerticalAlignment="Top" Source="error_icon.png" />
         <TextBlock

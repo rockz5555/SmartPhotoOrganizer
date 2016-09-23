@@ -1,0 +1,14 @@
+﻿<Window x:Class="SmartPhotoOrganizer.UIAspects.SearchBox"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Search Images" Height="135" Width="342" WindowStartupLocation="CenterOwner" ResizeMode="NoResize" ShowInTaskbar="False">
+    <Grid Name="RootGrid">
+        <CheckBox Margin="46,39,154,36" Name="SearchFileName">Search Filename</CheckBox>
+        <CheckBox HorizontalAlignment="Right" Margin="0,39,22,36" Name="SearchTags" Width="120" Click="searchTags_Click">Search Tags</CheckBox>
+        <Button Height="23" HorizontalAlignment="Left" Margin="63,0,0,10" Name="SearchOk" VerticalAlignment="Bottom" Width="75" IsDefault="True" Click="searchOk_Click">Search</Button>
+        <Button Height="23" HorizontalAlignment="Right" Margin="0,0,59,10" Name="SearchCancel" VerticalAlignment="Bottom" Width="75" IsCancel="True">Cancel</Button>
+    </Grid>
+</Window>

@@ -1,0 +1,43 @@
+﻿<Window x:Class="SmartPhotoOrganizer.UIAspects.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:SmartPhotoOrganizer.UIAspects"
+        Title="Settings Window" Height="341" Width="406.242" ResizeMode="CanResize" WindowStartupLocation="CenterOwner" ShowInTaskbar="False" Closing="Window_Closing" MinWidth="300" MinHeight="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="40" />
+        </Grid.RowDefinitions>
+        <TabControl Grid.Row="0" Name="MainTabControl">
+            <TabItem Header="General" Name="GeneralTab">
+                <Grid>
+                    <Label Height="28" HorizontalAlignment="Left" Margin="82,28,0,0" Name="Label2" VerticalAlignment="Top" Width="120">Fullscreen:</Label>
+                    <StackPanel Orientation="Vertical"  Margin="103,61,0,0" HorizontalAlignment="Left" Width="184" Height="57" VerticalAlignment="Top">
+                        <RadioButton Height="16" HorizontalAlignment="Left" Name="FullscreenRemember" VerticalAlignment="Top" Width="164" GroupName="fullscreen">Remember from last time</RadioButton>
+                        <RadioButton Height="16" HorizontalAlignment="Left" Name="FullscreenFullscreen" VerticalAlignment="Top" Width="147" GroupName="fullscreen">Always start fullscreen</RadioButton>
+                        <RadioButton Height="16" HorizontalAlignment="Left" Name="FullscreenWindowed" VerticalAlignment="Top" Width="147" GroupName="fullscreen">Always start windowed</RadioButton>
+                    </StackPanel>
+                    <CheckBox Margin="82,120,0,0" Name="OverlayInfobarBox" HorizontalAlignment="Left" Width="193" Height="16" VerticalAlignment="Top">Overlay infobar on image</CheckBox>
+                    <Label HorizontalAlignment="Left" Margin="82,150,0,0" Name="Label1" Width="151" Height="28" VerticalAlignment="Top">Slideshow delay (seconds):</Label>
+                    <TextBox
+                        Name="SlideshowDelayBox"
+                        Margin="237,151,0,0"
+                        PreviewTextInput="slideshowDelayBox_PreviewTextInput"
+                        PreviewKeyDown="slideshowDelayBox_PreviewKeyDown"
+                        PreviewMouseLeftButtonDown="slideshowDelayBox_PreviewMouseLeftButtonDown"
+                        HorizontalAlignment="Left"
+                        Width="28"
+                        Height="23"
+                        VerticalAlignment="Top" />
+                </Grid>
+            </TabItem>
+            <TabItem Header="Image Library Folders" Name="LibraryTab">
+                <Grid>
+                    <local:MultiFolderPickerWithRelocation Margin="6" x:Name="MultiFolderPicker" />
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Button Grid.Row="1" Height="23" Margin="0,0,111,9" Name="OkButton" VerticalAlignment="Bottom" IsDefault="True" Click="okButton_Click" HorizontalAlignment="Right" Width="76">OK</Button>
+        <Button Grid.Row="2" Height="23" HorizontalAlignment="Right" Margin="0,0,16,9" Name="CancelButton" VerticalAlignment="Bottom" Width="75" IsCancel="True">Cancel</Button>
+    </Grid>
+</Window>

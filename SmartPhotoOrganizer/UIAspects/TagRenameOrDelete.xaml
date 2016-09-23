@@ -1,0 +1,24 @@
+﻿<Window x:Class="SmartPhotoOrganizer.UIAspects.TagRenameOrDelete"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Rename or Delete Tags" Height="318" Width="404" WindowStartupLocation="CenterOwner" Closing="Window_Closing">
+    <Grid>
+        <ListBox Margin="12,36,148,12" Name="TagBox" SelectionChanged="tagBox_SelectionChanged">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Path=TagText}" />
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Label Height="28" HorizontalAlignment="Left" Margin="12,4,0,0" Name="Label1" VerticalAlignment="Top" Width="50">Search:</Label>
+        <TextBox Height="23" Margin="68,7,157,0" Name="SearchBox" VerticalAlignment="Top" TextChanged="searchBox_TextChanged" />
+        <Button Height="23" HorizontalAlignment="Right" Margin="0,56,36,0" Name="RenameButton" VerticalAlignment="Top" Width="75" IsEnabled="False" Click="renameButton_Click">Rename</Button>
+        <Label Height="28" HorizontalAlignment="Right" Margin="0,4,36,0" Name="Label2" VerticalAlignment="Top" Width="75">Rename to:</Label>
+        <TextBox Height="23" HorizontalAlignment="Right" Margin="0,27,12,0" Name="RenameBox" VerticalAlignment="Top" Width="130" />
+        <Button Height="23" HorizontalAlignment="Right" Margin="0,113,36,0" Name="DeleteButton" VerticalAlignment="Top" Width="75" IsEnabled="False" Click="deleteButton_Click">Delete</Button>
+        <Button Height="23" HorizontalAlignment="Right" Margin="0,0,12,12" Name="CloseButton" VerticalAlignment="Bottom" Width="75" IsCancel="True" IsDefault="True">Close</Button>
+    </Grid>
+</Window>

@@ -1,0 +1,29 @@
+﻿<Window x:Class="SmartPhotoOrganizer.UIAspects.EditTagBox"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Edit Tags" Height="140" Width="390" WindowStartupLocation="CenterOwner" ResizeMode="NoResize" ShowInTaskbar="False">
+    <Window.Resources>
+        <Style TargetType="{x:Type ListBoxItem}">
+            <Style.Triggers>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="IsSelected" Value="false" />
+                        <Condition Property="IsMouseOver" Value="true" />
+                    </MultiTrigger.Conditions>
+                    <Setter Property="Background" Value="{StaticResource HoverBrush}"/>
+                </MultiTrigger>
+            </Style.Triggers>
+            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+            <Setter Property="Padding" Value="0" />
+        </Style>
+    </Window.Resources>
+    <Grid Name="RootGrid">
+        <Label HorizontalAlignment="Left" Name="Label1" Width="120" Height="28" VerticalAlignment="Top" Margin="15,5,0,0">Tags:</Label>
+        <Button Margin="0,0,198,16" Name="TagEditOk" Height="23" VerticalAlignment="Bottom" IsDefault="True" Click="tagEditOk_Click" HorizontalAlignment="Right" Width="75">Save Edit</Button>
+        <Button HorizontalAlignment="Right" Margin="0,0,68,16" Name="TagEditCancel" Width="75" Height="23" VerticalAlignment="Bottom" IsCancel="True">Cancel</Button>
+        <Label Margin="57,30,150,47" Name="Label2">Separate tags with spaces.</Label>
+    </Grid>
+</Window>

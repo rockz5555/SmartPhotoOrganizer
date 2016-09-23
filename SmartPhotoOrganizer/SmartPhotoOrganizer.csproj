@@ -42,15 +42,14 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Data.SQLite">
+    <Reference Include="System.Data.SQLite, Version=1.0.65.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Users\nizwe\Desktop\System.Data.SQLite.DLL</HintPath>
     </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
@@ -63,7 +62,41 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="DbConfig.cs" />
+    <Compile Include="DataReaderExtensions.cs" />
+    <Compile Include="DataStructures\CachedImage.cs" />
+    <Compile Include="DatabaseOp\DbConfig.cs" />
+    <Compile Include="DatabaseOp\DbConfigAccess.cs" />
+    <Compile Include="DataStructures\OrphanedData.cs" />
+    <Compile Include="DataStructures\SortType.cs" />
+    <Compile Include="DataStructures\FullscreenStart.cs" />
+    <Compile Include="EditOperations.cs" />
+    <Compile Include="GifImageControl.cs" />
+    <Compile Include="ImageCache.cs" />
+    <Compile Include="ImageListControl.cs" />
+    <Compile Include="ImageQuery.cs" />
+    <Compile Include="ImageUserData.cs" />
+    <Compile Include="ImageViewer.cs" />
+    <Compile Include="InputRelated\EditKeyRow.cs" />
+    <Compile Include="InputRelated\InputCommand.cs" />
+    <Compile Include="InputRelated\InputMapper.cs" />
+    <Compile Include="InputRelated\InputType.cs" />
+    <Compile Include="InputRelated\MappingInsert.cs" />
+    <Compile Include="InputRelated\MouseWheelAction.cs" />
+    <Compile Include="InputRelated\UserAction.cs" />
+    <Compile Include="QueryOperations.cs" />
+    <Compile Include="TagOperations.cs" />
+    <Compile Include="UIAspects\EditKeys.xaml.cs">
+      <DependentUpon>EditKeys.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UIAspects\EditMultipleTags.xaml.cs">
+      <DependentUpon>EditMultipleTags.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UIAspects\EditTagBox.xaml.cs">
+      <DependentUpon>EditTagBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UIAspects\EditViewList.xaml.cs">
+      <DependentUpon>EditViewList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UIAspects\ExceptionWindow.xaml.cs">
       <DependentUpon>ExceptionWindow.xaml</DependentUpon>
     </Compile>
@@ -73,6 +106,30 @@
     <Compile Include="UIAspects\MultiFolderPicker.xaml.cs">
       <DependentUpon>MultiFolderPicker.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UIAspects\MultiFolderPickerWithRelocation.cs" />
+    <Compile Include="UIAspects\RenameBox.xaml.cs">
+      <DependentUpon>RenameBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UIAspects\SearchBox.xaml.cs">
+      <DependentUpon>SearchBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UIAspects\SettingsTab.cs" />
+    <Compile Include="UIAspects\SettingsWindow.xaml.cs">
+      <DependentUpon>SettingsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UIAspects\SharedUi.cs" />
+    <Compile Include="UIAspects\TagAutoCompleteTextBox.xaml.cs">
+      <DependentUpon>TagAutoCompleteTextBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UIAspects\TagRenameOrDelete.xaml.cs">
+      <DependentUpon>TagRenameOrDelete.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UIAspects\TagWithFrequency.cs" />
+    <Compile Include="UIAspects\ViewLists.xaml.cs">
+      <DependentUpon>ViewLists.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities.cs" />
+    <Compile Include="DataStructures\WindowSize.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -81,14 +138,30 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BaseDirectory.cs" />
-    <Compile Include="Database.cs" />
+    <Compile Include="DataStructures\BaseDirectory.cs" />
+    <Compile Include="DatabaseOp\Database.cs" />
     <Compile Include="DirectorySet.cs" />
     <Compile Include="PhotoManager.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="UIAspects\EditKeys.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UIAspects\EditMultipleTags.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UIAspects\EditTagBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UIAspects\EditViewList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UIAspects\ExceptionWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -98,6 +171,30 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UIAspects\MultiFolderPicker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UIAspects\RenameBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UIAspects\SearchBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UIAspects\SettingsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UIAspects\TagAutoCompleteTextBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UIAspects\TagRenameOrDelete.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UIAspects\ViewLists.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -140,6 +237,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="UIAspects\error_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <SplashScreen Include="splash_image.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

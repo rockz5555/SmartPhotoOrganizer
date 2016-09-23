@@ -1,0 +1,40 @@
+﻿<Window x:Class="SmartPhotoOrganizer.UIAspects.EditViewList"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Edit View List" Height="301" Width="403" WindowStartupLocation="CenterOwner" ShowInTaskbar="False" MinWidth="403" MinHeight="301">
+    <Grid Name="MainGrid" >
+        <TextBox Height="23" Margin="87,10,110,0" Name="NameBox" VerticalAlignment="Top" />
+        <Label Height="28" Margin="12,10,0,0" Name="Label1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="78">View Name:</Label>
+        <ComboBox Height="23" Margin="76,44,0,0" Name="OrderByBox" VerticalAlignment="Top" HorizontalAlignment="Left" Width="120">
+            <ComboBoxItem Content="Random" IsSelected="True"/>
+            <ComboBoxItem Content="File Name" />
+            <ComboBoxItem Content="Last Modified" />
+        </ComboBox>
+        <Label Height="28" HorizontalAlignment="Left" Margin="12,44,0,0" Name="Label2" VerticalAlignment="Top" Width="58">Order:</Label>
+        <ComboBox Height="23" Margin="231,44,0,0" Name="AscendingBox" VerticalAlignment="Top" HorizontalAlignment="Left" Width="120" IsEnabled="False">
+            <ComboBoxItem Content="Ascending" IsSelected="True" />
+            <ComboBoxItem Content="Descending" />
+        </ComboBox>
+        <ComboBox Height="23" Margin="70,78,0,0" Name="RatingBox" VerticalAlignment="Top" HorizontalAlignment="Left" Width="126">
+            <ComboBoxItem Content="Any" IsSelected="True" />
+            <ComboBoxItem Content="1+" />
+            <ComboBoxItem Content="2+" />
+            <ComboBoxItem Content="3+" />
+            <ComboBoxItem Content="4+" />
+            <ComboBoxItem Content="5+" />
+            <ComboBoxItem Content="Unrated" />
+        </ComboBox>
+        <Label HorizontalAlignment="Left" Margin="12,78,0,0" Name="Label3" Width="52" Height="28" VerticalAlignment="Top">Rating:</Label>
+        <Label HorizontalAlignment="Left" Margin="12,112,0,0" Name="Label4" Width="52" Height="28" VerticalAlignment="Top">Search:</Label>
+        <CheckBox Height="16" Margin="0,115,0,0" Name="TagsSearchBox" VerticalAlignment="Top" HorizontalAlignment="Right" Width="67" Click="tagsSearchBox_Click">Tags</CheckBox>
+        <CheckBox Height="16" HorizontalAlignment="Right" Margin="0,115,73,0" Name="FileNameSearchBox" VerticalAlignment="Top" Width="86">File Name</CheckBox>
+        <CheckBox HorizontalAlignment="Left" Margin="33,146,0,0" Name="UntaggedBox" Width="120" Height="19" VerticalAlignment="Top">Untagged Only</CheckBox>
+        <TextBox Margin="112,183,12,0" Name="CustomClauseBox" Height="23" VerticalAlignment="Top" />
+        <Label Height="28" HorizontalAlignment="Left" Margin="12,179,0,0" Name="Label5" VerticalAlignment="Top" Width="120">Custom Clause:</Label>
+        <Button Height="23" HorizontalAlignment="Right" Margin="0,0,12,12" Name="CancelButton" VerticalAlignment="Bottom" Width="75" IsCancel="True">Cancel</Button>
+        <Button Height="23" Margin="0,0,93,12" Name="OkButton" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="75" IsDefault="True" Click="okButton_Click">OK</Button>
+    </Grid>
+</Window>

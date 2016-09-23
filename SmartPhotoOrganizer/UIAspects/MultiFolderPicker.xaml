@@ -1,10 +1,10 @@
-﻿<UserControl x:Class="SmartPhotoOrganizer.UIAspects.MultiFolderPicker"
+﻿<UserControl
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Grid MinWidth="241" MinHeight="90">
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="SmartPhotoOrganizer.UIAspects.MultiFolderPicker" Width="303">
+    <Grid MinWidth="241" MinHeight="90" Height="87" >
         <TreeView Margin="0,0,95,0" Name="FolderTreeView" SelectedItemChanged="FolderTreeView_SelectedItemChanged" />
-        <Button Height="23" HorizontalAlignment="Right" Name="AddFolderButton" VerticalAlignment="Top" Width="75" Click="AddFolderButton_Click">Add Folder(s)</Button>
-        <Button HorizontalAlignment="Right" Margin="0,29,0,0" Name="RemoveFolderButton" Width="89" Height="23" VerticalAlignment="Top" Click="RemoveFolderButton_Click" IsEnabled="False">Remove Folder(s)</Button>
+        <Button Height="23" HorizontalAlignment="Right" Name="AddFolderButton" VerticalAlignment="Top" Width="75" Click="AddFolderButton_Click">Add Folder...</Button>
+        <Button HorizontalAlignment="Right" Margin="0,29,0,0" Name="RemoveFolderButton" Width="89" Height="23" VerticalAlignment="Top" Click="RemoveFolderButton_Click" IsEnabled="False">Remove Folder</Button>
     </Grid>
 </UserControl>
 

@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Threading;
 using SmartPhotoOrganizer.UIAspects;
 
 namespace SmartPhotoOrganizer
@@ -10,10 +11,11 @@ namespace SmartPhotoOrganizer
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-			DispatcherUnhandledException += OnDispatcherUnhandledException;
             base.OnStartup(e);
+            DispatcherUnhandledException += OnDispatcherUnhandledException;
         }
-        private static void OnDispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
+
+        private static void OnDispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
         {
             var exceptionWindow = new ExceptionWindow(e.Exception);
             exceptionWindow.ShowDialog();

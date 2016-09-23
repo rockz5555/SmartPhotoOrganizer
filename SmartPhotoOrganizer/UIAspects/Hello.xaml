@@ -5,13 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SmartPhotoOrganizer.UIAspects"
         mc:Ignorable="d"
-        Title="Hello there! Welcome to Smart Photo Organizer" Height="400" Width="533" WindowStartupLocation="CenterScreen" ResizeMode="CanResize" Icon="/SmartPhotoOrganizer;component/spo_icon.ico" >
-    <Grid>
+        Title="Hello there! Welcome to Smart Photo Organizer"  Height="311.846" Width="533" WindowStartupLocation="CenterScreen" Icon="/SmartPhotoOrganizer;component/spo_icon.ico" >
+    <Grid Margin="0,0,0,-48" HorizontalAlignment="Left" Width="523" Height="329" VerticalAlignment="Bottom">
         <TextBlock Height="21" Margin="33,47,0,0" Name="TextBlock2" VerticalAlignment="Top" Text="Do you wanna start? Then, please select folders with images." HorizontalAlignment="Left" Width="326" />
         <TextBlock Height="21" Margin="22,12,0,0" Name="TextBlock3" VerticalAlignment="Top" Text="Hello from Smart Photo Organizer..." FontSize="16" HorizontalAlignment="Left" Width="272" />
         <Label HorizontalAlignment="Left" Margin="33,114,0,118" Name="Label1" Width="120">Source Folders</Label>
-        <local:MultiFolderPicker Margin="12,74,12,86" x:Name="MultiFolderPicker" />
-        <Button Height="23" HorizontalAlignment="Right" Margin="0,0,111,12" Name="OkButton" VerticalAlignment="Bottom" Width="75" Click="okButton_Click">OK</Button>
-        <Button Height="23" HorizontalAlignment="Right" Margin="0,0,22,12" Name="CancelButton" VerticalAlignment="Bottom" Width="75" IsCancel="True">Cancel</Button>
+        <local:MultiFolderPicker Margin="140,47,68,113" x:Name="MultiFolderPicker" />
+        <TextBlock Height="21" Margin="29,0,102,121" Name="TextBlock4" VerticalAlignment="Bottom" Text="Press F1 key to view shortcuts/handler keys for Smart Photo Organizer" Foreground="#FFC34848" Grid.ColumnSpan="2" />
+        <Button Height="23" HorizontalAlignment="Right" Margin="0,0,67.854,85" Name="OkButton" VerticalAlignment="Bottom" Width="75" Click="okButton_Click">OK</Button>
+        <Button Height="23" HorizontalAlignment="Right" Margin="0,0,164,85" Name="CancelButton" VerticalAlignment="Bottom" Width="75" IsCancel="True">Cancel</Button>
     </Grid>
 </Window>

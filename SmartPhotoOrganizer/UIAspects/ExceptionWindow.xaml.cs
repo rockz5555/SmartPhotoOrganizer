@@ -10,7 +10,6 @@ namespace SmartPhotoOrganizer.UIAspects
         public ExceptionWindow(Exception exception)
         {
             InitializeComponent();
-
             ExceptionTextBox.Text = exception + Environment.NewLine;
         }
     }

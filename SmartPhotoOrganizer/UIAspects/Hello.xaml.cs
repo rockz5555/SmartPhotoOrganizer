@@ -22,7 +22,7 @@ namespace SmartPhotoOrganizer.UIAspects
             }
             else
             {
-                MessageBox.Show("Please select at least a single folder");
+                MessageBox.Show("Please select at least a single image folder", "Forgot to add a folder?", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

@@ -1,10 +1,12 @@
-﻿using Ookii.Dialogs.Wpf;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using Ookii.Dialogs.Wpf;
+using SmartPhotoOrganizer.DataStructures;
 
 namespace SmartPhotoOrganizer.UIAspects
 {
@@ -30,13 +32,10 @@ namespace SmartPhotoOrganizer.UIAspects
                     var baseDir = new BaseDirectory {Path = rootItem.Tag as string};
 
                     AddExcludedDirectories(rootItem, baseDir.Exclusions);
-
                     result.BaseDirectories.Add(baseDir);
                 }
-
                 return result;
             }
-
             set
             {
                 foreach (var baseDirectory in value.BaseDirectories)
@@ -59,7 +58,6 @@ namespace SmartPhotoOrganizer.UIAspects
                         hasDirectories = true;
                     }
                 }
-
                 return hasDirectories;
             }
         }
@@ -74,10 +72,8 @@ namespace SmartPhotoOrganizer.UIAspects
                 {
                     AddExpandedDirectories(rootItem, result);
                 }
-
                 return result;
             }
-
             set
             {
                 foreach (TreeViewItem rootItem in FolderTreeView.Items)
@@ -93,7 +89,6 @@ namespace SmartPhotoOrganizer.UIAspects
             {
                 expandedDirectories.Add(item.Tag as string);
             }
-
             foreach (TreeViewItem child in item.Items)
             {
                 AddExpandedDirectories(child, expandedDirectories);
@@ -111,7 +106,6 @@ namespace SmartPhotoOrganizer.UIAspects
                     item.IsExpanded = true;
                 }
             }
-
             foreach (TreeViewItem child in item.Items)
             {
                 ExpandDirectories(child, directoriesToExpand);
@@ -127,12 +121,10 @@ namespace SmartPhotoOrganizer.UIAspects
                 Header = CreateStackPanel(baseDirectory.Path, true, directoryExists),
                 Tag = baseDirectory.Path
             };
-
             if (directoryExists)
             {
                 AddSubdirectories(rootItem, baseDirectory, new DirectoryInfo(baseDirectory.Path), true);
             }
-
             FolderTreeView.Items.Add(rootItem);
         }
 
@@ -162,7 +154,7 @@ namespace SmartPhotoOrganizer.UIAspects
             }
             catch (UnauthorizedAccessException)
             {
-                // We ignore this directory.
+                // We ignore this
                 return;
             }
 
@@ -184,10 +176,8 @@ namespace SmartPhotoOrganizer.UIAspects
                     Tag = subdirectory.FullName.ToLowerInvariant()
                 };
                 parent.Items.Add(subItem);
-
                 AddSubdirectories(subItem, baseDirectory, subdirectory, included);
             }
-
             if (currentDirectoryIncluded && anyExcludedSubdirectories)
             {
                 MarkNodeAsIndeterminate(parent);
@@ -227,21 +217,17 @@ namespace SmartPhotoOrganizer.UIAspects
             var textBlock = new TextBlock {Text = text, Margin = new Thickness(2)};
             treeItem.Children.Add(textBlock);
 
-            if (!directoryExists)
+            if (directoryExists) return treeItem;
+            textBlock.Foreground = Brushes.Gray;
+
+            var missingText = new TextBlock
             {
-                textBlock.Foreground = System.Windows.Media.Brushes.Gray;
-
-                var missingText = new TextBlock
-                {
-                    Text = "(missing)",
-                    FontStyle = FontStyles.Italic,
-                    Foreground = System.Windows.Media.Brushes.Gray,
-                    Margin = new Thickness(6, 2, 2, 2)
-                };
-                treeItem.Children.Add(missingText);
-            }
-
-
+                Text = "(missing)",
+                FontStyle = FontStyles.Italic,
+                Foreground = Brushes.Gray,
+                Margin = new Thickness(6, 2, 2, 2)
+            };
+            treeItem.Children.Add(missingText);
             return treeItem;
         }
 
@@ -261,7 +247,6 @@ namespace SmartPhotoOrganizer.UIAspects
             {
                 UncheckChildren(item);
             }
-
             if (item != null) RefreshCheckedState(item.Parent as TreeViewItem);
         }
 
@@ -270,7 +255,6 @@ namespace SmartPhotoOrganizer.UIAspects
             foreach (TreeViewItem child in item.Items)
             {
                 ((CheckBox) ((StackPanel) child.Header).Children[0]).IsChecked = false;
-
                 UncheckChildren(child);
             }
         }
@@ -280,7 +264,6 @@ namespace SmartPhotoOrganizer.UIAspects
             foreach (TreeViewItem child in item.Items)
             {
                 GetCheckBoxFromTreeItem(child).IsChecked = true;
-
                 CheckChildren(child);
             }
         }
@@ -295,7 +278,6 @@ namespace SmartPhotoOrganizer.UIAspects
                 {
                     // This is the item we're looking for, check it.
                     GetCheckBoxFromTreeItem(child).IsChecked = true;
-
                     CheckChildren(child);
                     RefreshCheckedState(item);
                     ExpandNodeRecursive(item);
@@ -339,13 +321,11 @@ namespace SmartPhotoOrganizer.UIAspects
                 {
                     someChecked = true;
                     someUnchecked = true;
-
                     break;
                 }
-                else if (childChecked == true)
+                if (childChecked == true)
                 {
                     someChecked = true;
-
                     if (someUnchecked)
                     {
                         break;
@@ -354,7 +334,6 @@ namespace SmartPhotoOrganizer.UIAspects
                 else
                 {
                     someUnchecked = true;
-
                     if (someChecked)
                     {
                         break;
@@ -434,7 +413,6 @@ namespace SmartPhotoOrganizer.UIAspects
         protected void AddFolder(string path)
         {
             var selectedPathLower = path.ToLowerInvariant();
-
             var childrenOfSelectedPath = new List<TreeViewItem>();
 
             foreach (TreeViewItem item in FolderTreeView.Items)
@@ -477,7 +455,6 @@ namespace SmartPhotoOrganizer.UIAspects
         private void RemoveFolderButton_Click(object sender, RoutedEventArgs e)
         {
             var selectedItem = FolderTreeView.SelectedItem as TreeViewItem;
-
             if (selectedItem != null) FolderTreeView.Items.Remove(selectedItem);
         }
     }
