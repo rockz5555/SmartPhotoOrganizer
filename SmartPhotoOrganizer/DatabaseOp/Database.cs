@@ -430,7 +430,6 @@ namespace SmartPhotoOrganizer.DatabaseOp
             using (var transaction = connection.BeginTransaction())
             {
                 var tagParameter = new SQLiteParameter();
-                var depTagParameter = new SQLiteParameter();
                 var idParameter = new SQLiteParameter();
 
                 var updateTags = new SQLiteCommand(connection)
@@ -438,7 +437,6 @@ namespace SmartPhotoOrganizer.DatabaseOp
                     CommandText = "UPDATE images SET tags = ? WHERE id = ?"
                 };
                 updateTags.Parameters.Add(tagParameter);
-                updateTags.Parameters.Add(depTagParameter);
                 updateTags.Parameters.Add(idParameter);
 
                 foreach (var pair in newTags)

@@ -302,15 +302,12 @@ namespace SmartPhotoOrganizer
                                 {
                                     rating = reader.GetInt32("rating");
                                 }
-
                                 string hash = null;
                                 if (!reader.IsDbNull("hash"))
                                 {
                                     hash = reader.GetString("hash");
                                 }
-
                                 var hasTags = tags != null && tags.Length > 2;
-
                                 if (hasTags || rating > 0)
                                 {
                                     var orphanedData = new OrphanedData { Name = reader.GetString("name") };

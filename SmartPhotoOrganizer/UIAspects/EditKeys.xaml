@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Shortcut Keys for Smart Photo Organizer" Height="454" Width="468" WindowStartupLocation="CenterOwner" ShowInTaskbar="False" KeyDown="Window_KeyDown" Closing="Window_Closing" MinHeight="200" MinWidth="478" PreviewKeyDown="HandleKeyPress">
+        Title="Handler Keys for Smart Photo Organizer" Height="454" Width="468" WindowStartupLocation="CenterOwner" ShowInTaskbar="False" KeyDown="Window_KeyDown" Closing="Window_Closing" MinHeight="200" MinWidth="478" PreviewKeyDown="HandleKeyPress">
     <Grid Name="MainGrid">
         <Label Height="28" Margin="4,0,6,0" Name="Label1" VerticalAlignment="Top">Double-click on a key to change it. Press Delete to remove a key assignment.</Label>
         <ScrollViewer Name="ScrollViewer" Margin="0,21,0,41" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" FocusVisualStyle="{x:Null}">
