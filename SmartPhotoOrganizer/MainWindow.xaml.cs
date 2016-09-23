@@ -16,22 +16,18 @@ namespace SmartPhotoOrganizer
     /// </summary>
     public partial class MainWindow
     {
+        public bool AllowInput { get; set; } = true;
         private bool _overlayInfobar = true;
-
         private InputMapper _inputMapper;
-        private bool _allowInput = true;
-
         private ImageViewer _currentImage;
 
         public MainWindow()
         {
             InitializeComponent();
-
             PhotoManager.Initiate(this);
-
             _inputMapper = new InputMapper(PhotoManager.Connection);
-
             var fullscreenStart = PhotoManager.Config.FullscreenStartSetting;
+
             switch (fullscreenStart)
             {
                 case FullscreenStart.RememberLast:
@@ -43,7 +39,6 @@ namespace SmartPhotoOrganizer
                     {
                         SetWindowed();
                     }
-
                     break;
                 case FullscreenStart.AlwaysFullscreen:
                     SetFullscreen();
@@ -52,7 +47,6 @@ namespace SmartPhotoOrganizer
                     SetWindowed();
                     break;
             }
-
             if (!PhotoManager.Config.OverlayInfobar)
             {
                 OverlayInfobar = false;
@@ -78,7 +72,6 @@ namespace SmartPhotoOrganizer
                     {
                         imageViewer.FileExists = false;
                     }
-
                     BackgroundRectangle.Visibility = Visibility.Hidden;
                     ImageGrid.Visibility = Visibility.Hidden;
                     GifImage.Visibility = Visibility.Visible;
@@ -104,19 +97,16 @@ namespace SmartPhotoOrganizer
                         BackgroundRectangle.Fill = Brushes.Black;
                     }
                 }
-
                 if (!imageViewer.FileExists)
                 {
                     ErrorText.Text = "File no longer exists.";
                     ErrorText.Visibility = Visibility.Visible;
                 }
-
                 if (imageViewer.Corrupted)
                 {
                     ErrorText.Text = "Could not read image.";
                     ErrorText.Visibility = Visibility.Visible;
                 }
-
                 _currentImage = imageViewer;
             }
             else
@@ -124,12 +114,9 @@ namespace SmartPhotoOrganizer
                 GifImage.Visibility = Visibility.Hidden;
                 BackgroundRectangle.Visibility = Visibility.Hidden;
                 ImageGrid.Visibility = Visibility.Hidden;
-
                 GifImage.GifSource = null;
-
                 _currentImage = null;
             }
-
             UpdateInfoBar();
         }
 
@@ -139,12 +126,9 @@ namespace SmartPhotoOrganizer
             BackgroundRectangle.Visibility = Visibility.Hidden;
             ImageGrid.Visibility = Visibility.Hidden;
             ErrorText.Visibility = Visibility.Collapsed;
-
             InformationalText.Text = "No image met filter critera.";
             InformationalText.Visibility = Visibility.Visible;
-
             GifImage.GifSource = null;
-
             _currentImage = null;
             UpdateInfoBar();
         }
@@ -155,12 +139,9 @@ namespace SmartPhotoOrganizer
             BackgroundRectangle.Visibility = Visibility.Hidden;
             ImageGrid.Visibility = Visibility.Hidden;
             ErrorText.Visibility = Visibility.Collapsed;
-
             InformationalText.Text = "No images present in library.";
             InformationalText.Visibility = Visibility.Visible;
-
             GifImage.GifSource = null;
-
             _currentImage = null;
             UpdateInfoBar();
         }
@@ -172,7 +153,6 @@ namespace SmartPhotoOrganizer
             InformationalText.Text = "Loading...";
             InformationalText.Visibility = Visibility.Visible;
             BackgroundRectangle.Fill = Brushes.Black;
-
             UpdateInfoBarUserData(ImageListControl.CurrentImageData);
         }
 
@@ -200,7 +180,6 @@ namespace SmartPhotoOrganizer
                 {
                     imageAspectRatio = ((double)image.PixelHeight) / image.PixelWidth;
                 }
-
                 uiImage.Stretch = Stretch.Fill;
                 if (imageAspectRatio > holderAspectRatio)
                 {
@@ -213,9 +192,7 @@ namespace SmartPhotoOrganizer
                     uiImage.Height = ImageGrid.ActualHeight;
                 }
             }
-
             ImageGrid.Children.Insert(0, uiImage);
-
             return uiImage;
         }
 
@@ -230,12 +207,6 @@ namespace SmartPhotoOrganizer
         public void ClearCache()
         {
             ImageGrid.Children.RemoveRange(0, ImageGrid.Children.Count);
-        }
-
-        public bool AllowInput
-        {
-            get { return _allowInput; }
-            set { _allowInput = value; }
         }
 
         public void UpdateInfoBar()
@@ -269,9 +240,7 @@ namespace SmartPhotoOrganizer
                 {
                     Rating.Visibility = Visibility.Collapsed;
                 }
-
                 PlayIcon.Visibility = ImageListControl.Playing ? Visibility.Visible : Visibility.Collapsed;
-
                 ViewIndex.Text = (ImageListControl.CurrentIndex + 1) + "/" + ImageListControl.TotalImages;
             }
             else
@@ -285,7 +254,6 @@ namespace SmartPhotoOrganizer
 
                 ViewIndex.Text = "0/0";
             }
-
             UpdateImageQueryInfo();
         }
 
@@ -302,7 +270,6 @@ namespace SmartPhotoOrganizer
             }
 
             FileName.Text = PhotoManager.Config.SourceDirectories.GetRelativeName(imageData.Name);
-
             Duplicate.Visibility = Visibility.Collapsed;
 
             if (imageData.Rating > 0)
@@ -316,7 +283,6 @@ namespace SmartPhotoOrganizer
             {
                 Rating.Visibility = Visibility.Collapsed;
             }
-
             UpdateImageQueryInfo();
         }
 
@@ -352,8 +318,8 @@ namespace SmartPhotoOrganizer
                 }
 
                 var filters = new List<string>();
-
                 var ratingView = ImageQuery.MinRating;
+
                 if (ratingView == -1)
                 {
                     filters.Add("Unrated");
@@ -366,22 +332,18 @@ namespace SmartPhotoOrganizer
                 {
                     FiltersText.Text = "";
                 }
-
                 if (ImageQuery.UntaggedOnly)
                 {
                     filters.Add("Untagged");
                 }
-
                 if (ImageQuery.Search != "")
                 {
                     filters.Add("\"" + ImageQuery.Search + "\"");
                 }
-
                 if (ImageQuery.CustomClause != "")
                 {
                     filters.Add("Custom Clause");
                 }
-
                 if (filters.Count > 0)
                 {
                     FiltersPanel.Visibility = Visibility.Visible;
@@ -471,7 +433,7 @@ namespace SmartPhotoOrganizer
 
         private void ExecuteUserAction(UserAction action)
         {
-            if (!_allowInput && action != UserAction.ToggleFullscreen && action != UserAction.Quit)
+            if (!AllowInput && action != UserAction.ToggleFullscreen && action != UserAction.Quit)
             {
                 return;
             }
@@ -629,7 +591,6 @@ namespace SmartPhotoOrganizer
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             var point = Mouse.GetPosition(this);
-
             var userAction = _inputMapper.GetActionFromMouseButton(e.ChangedButton);
 
             if (userAction == UserAction.None && e.ChangedButton == MouseButton.Left)
@@ -651,7 +612,6 @@ namespace SmartPhotoOrganizer
             else
             {
                 PhotoManager.SaveWindowSize();
-
                 SetFullscreen();
             }
         }
@@ -659,7 +619,6 @@ namespace SmartPhotoOrganizer
         private void SetFullscreen()
         {
             FullScreen = true;
-
             Cursor = Cursors.None;
             WindowStyle = WindowStyle.None;
             ResizeMode = ResizeMode.NoResize;
@@ -669,7 +628,6 @@ namespace SmartPhotoOrganizer
         private void SetWindowed()
         {
             FullScreen = false;
-
             Cursor = Cursors.Arrow;
             WindowStyle = WindowStyle.SingleBorderWindow;
             ResizeMode = ResizeMode.CanResize;
@@ -697,7 +655,6 @@ namespace SmartPhotoOrganizer
             {
                 PhotoManager.SaveWindowSize();
             }
-
             if (PhotoManager.Config.FullscreenStartSetting == FullscreenStart.RememberLast)
             {
                 PhotoManager.Config.FullscreenStart = FullScreen;
